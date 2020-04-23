@@ -1,31 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 
 
-class Videoitem extends Component{
+const Videoitem = ({ video ,onSelectVideo}) =>{
+ 
 
-
-    render(){
-        const { video} = this.props;
-
-        if (!video) {
-           return <div> Loading...... </div>
-        }
-
-        return(
-            <React.Fragment>
-                <img src={video.snippet.thumbnails.medium.url}
-                alt={video.snippet.title}
-                width={video.snippet.thumbnails.medium.width}
-                height={video.snippet.thumbnails.medium.height}
-                />
-                <div style={{margin:"20px"}}>
-                {video.snippet.title}
-                </div>
-            </React.Fragment>
-        );
-
-
+    if (!video) {
+       return <div> Loading...... </div>
     }
-}
 
+    return(
+        <div onClick={()=> onSelectVideo(video)}>
+            <img src={video.snippet.thumbnails.medium.url}
+            alt={video.snippet.title}
+            width={video.snippet.thumbnails.medium.width}
+            height={video.snippet.thumbnails.medium.height}
+            />
+            <div style={{margin:"20px"}}>
+            {video.snippet.title}
+            </div>
+        </div>
+    );
+
+
+}
 export default Videoitem;
